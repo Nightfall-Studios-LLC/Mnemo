@@ -1,5 +1,0 @@
-<RCC>
-    <!-- Add assets/icons/mnemo.svg as :/icons/mnemo.svg when final artwork is available. -->
-    <qresource prefix="/icons"/>
-</RCC>
-

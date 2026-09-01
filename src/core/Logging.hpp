@@ -1,7 +1,0 @@
-#pragma once
-#include <QLoggingCategory>
-Q_DECLARE_LOGGING_CATEGORY(logCore)
-Q_DECLARE_LOGGING_CATEGORY(logUi)
-Q_DECLARE_LOGGING_CATEGORY(logProviders)
-Q_DECLARE_LOGGING_CATEGORY(logGames)
-
