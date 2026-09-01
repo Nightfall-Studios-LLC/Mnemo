@@ -5,7 +5,7 @@ labels: ["type: bug", "status: needs-triage"]
 body:
   - type: markdown
     attributes:
-      value: Thanks for helping improve this pre-alpha project. Remove secrets and private save data from logs.
+      value: Remove secrets and private save data from logs before submitting.
   - type: input
     id: version
     attributes:
@@ -63,4 +63,3 @@ body:
     id: context
     attributes:
       label: Additional context
-
