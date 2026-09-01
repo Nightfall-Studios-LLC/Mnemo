@@ -1,6 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: Security vulnerability
-    url: https://github.com/wyattfr/Mnemo/security/advisories/new
+    url: https://github.com/Nightfall-Studios-LLC/Mnemo/security/advisories/new
     about: Report suspected vulnerabilities privately.
-

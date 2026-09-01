@@ -56,37 +56,9 @@ Prefer Conventional Commits: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, and
 are encouraged, for example `feat(provider): add local provider` or
 `fix(restore): preserve timestamps`.
 
-## Recommended GitHub Repository Settings
+## GitHub repository administration
 
-Main branch ruleset:
-
-- Require pull requests before merge.
-- Block force pushes and branch deletion.
-- Require conversation resolution.
-- Require passing CI once it is stable.
-- Do not require external approval while there is only one maintainer.
-
-Merge settings:
-
-- Enable squash merging and automatic deletion of merged branches.
-- Consider disabling merge commits.
-
-Security settings:
-
-- Enable Dependabot alerts and security updates.
-- Enable secret scanning, push protection, and private vulnerability reporting.
-
-Suggested Discussions categories are Ideas, Q&A, Provider Development, Game Definitions, Show and
-Tell, and General.
-
-Suggested labels are `type: bug`, `type: feature`, `type: refactor`, `type: documentation`,
-`area: ui`, `area: core`, `area: providers`, `area: detection`, `area: backup`, `area: restore`,
-`area: sync`, `status: needs-triage`, `status: blocked`, `status: needs-info`, `good first issue`,
-`help wanted`, and `breaking change`.
-
-Recommended description: "Open-source game save manager with versioned backups and pluggable
-cloud, local, and network storage providers."
-
-Recommended topics: `game-saves`, `backup`, `save-manager`, `cloud-storage`, `gaming`,
-`open-source`, `game-backup`, `qt`, `cpp`, and `cmake`.
+The exact repository settings and labels maintainers should configure are documented in
+[github-setup.md](github-setup.md). These settings are intentionally separate from the local
+developer workflow because most require repository administrator access.
 
