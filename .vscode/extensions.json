@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "ms-vscode.cmake-tools",
+    "ms-vscode.cpptools",
+    "redhat.vscode-yaml",
+    "davidanson.vscode-markdownlint"
+  ]
+}
+

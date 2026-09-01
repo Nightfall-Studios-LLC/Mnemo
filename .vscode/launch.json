@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Mnemo",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/debug/bin/Mnemo.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [
+        {
+          "name": "PATH",
+          "value": "${env:MNEMO_MSYS2_ROOT}/ucrt64/bin;${env:PATH}"
+        }
+      ],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "${env:MNEMO_MSYS2_ROOT}/ucrt64/bin/gdb.exe",
+      "setupCommands": [
+        {
+          "description": "Enable GDB pretty printing",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "Mnemo: Build (Debug)"
+    }
+  ]
+}
+

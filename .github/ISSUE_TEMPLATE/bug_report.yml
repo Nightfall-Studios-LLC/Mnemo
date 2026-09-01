@@ -1,0 +1,66 @@
+name: Bug report
+description: Report reproducible incorrect behavior in Mnemo.
+title: "[Bug]: "
+labels: ["type: bug", "status: needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve this pre-alpha project. Remove secrets and private save data from logs.
+  - type: input
+    id: version
+    attributes:
+      label: Mnemo version
+      placeholder: 0.1.0-dev or commit SHA
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: Windows 11 24H2
+    validations:
+      required: true
+  - type: input
+    id: game
+    attributes:
+      label: Affected game
+      description: Enter N/A if the bug is not game-specific.
+    validations:
+      required: true
+  - type: input
+    id: provider
+    attributes:
+      label: Storage provider
+      description: Enter N/A if the bug is not provider-specific.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      placeholder: "1. Open…\n2. Select…\n3. Observe…"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Paste relevant logs after removing tokens, credentials, usernames, and private paths.
+      render: shell
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+
