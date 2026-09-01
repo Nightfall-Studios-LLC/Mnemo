@@ -1,0 +1,40 @@
+name: Storage provider request
+description: Propose a local, network, or cloud storage provider.
+title: "[Provider]: "
+labels: ["type: feature", "area: providers", "status: needs-triage"]
+body:
+  - type: input
+    id: provider
+    attributes:
+      label: Provider name
+    validations:
+      required: true
+  - type: input
+    id: website
+    attributes:
+      label: Website
+    validations:
+      required: true
+  - type: input
+    id: api
+    attributes:
+      label: API documentation
+  - type: textarea
+    id: auth
+    attributes:
+      label: Authentication mechanism
+      description: Describe it if known. Never paste credentials.
+  - type: input
+    id: platforms
+    attributes:
+      label: Supported platforms
+      placeholder: Windows, Linux
+    validations:
+      required: true
+  - type: textarea
+    id: usefulness
+    attributes:
+      label: Why would it be useful?
+    validations:
+      required: true
+

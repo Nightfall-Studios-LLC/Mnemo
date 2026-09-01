@@ -1,0 +1,50 @@
+name: Game support request
+description: Request or document support for a game's saves.
+title: "[Game]: "
+labels: ["type: feature", "area: detection", "status: needs-triage"]
+body:
+  - type: input
+    id: game
+    attributes:
+      label: Game
+    validations:
+      required: true
+  - type: input
+    id: launcher
+    attributes:
+      label: Launcher
+      placeholder: Steam, GOG, Epic, standalone
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+    validations:
+      required: true
+  - type: textarea
+    id: path
+    attributes:
+      label: Known save path
+      description: Replace personal usernames with environment variables.
+  - type: textarea
+    id: structure
+    attributes:
+      label: Save structure
+      description: Describe important files and directory layout if known.
+  - type: dropdown
+    id: multiple
+    attributes:
+      label: Multiple worlds, characters, or slots?
+      options: ["Yes", "No", "Unknown"]
+    validations:
+      required: true
+  - type: textarea
+    id: cloud
+    attributes:
+      label: Existing built-in cloud-save support
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+
