@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { BackupSnapshot, Game, SaveTarget } from "../types";
 import { Icon, ProviderIcon, StatusIcon } from "./Icons";
+import { GameArtwork } from "./GameArtwork";
 
 type Tab = "Saves" | "Backups" | "Locations" | "Settings";
 
@@ -8,7 +9,7 @@ export function Inspector({ game, snapshots, onToggle, onAdd, onBackup, onRestor
   const [tab, setTab] = useState<Tab>("Saves");
   const protectedCount = game.saveTargets.filter(t => t.enabled && t.providerIds.length).length;
   return <aside className="inspector">
-    <div className="inspector-head"><img src={game.artwork}/><span><h2>{game.name}</h2><p><b>✓</b>{protectedCount} of {game.saveTargets.length} save targets protected</p></span></div>
+    <div className="inspector-head"><GameArtwork gameId={game.id} name={game.name} steamAppId={game.steamAppId} artwork={game.artwork}/><span><h2>{game.name}</h2><p><b>✓</b>{protectedCount} of {game.saveTargets.length} save targets protected</p></span></div>
     <div className="tabs">{(["Saves", "Backups", "Locations", "Settings"] as Tab[]).map(t => <button className={tab === t ? "active" : ""} onClick={() => setTab(t)} key={t}>{t}</button>)}</div>
     <div className="tab-content">
       {tab === "Saves" && <Saves targets={game.saveTargets} onToggle={onToggle}/>} 

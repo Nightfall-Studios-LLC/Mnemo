@@ -1,1 +1,1 @@
-{"id":"stardew-valley","name":"Stardew Valley","launcher":"Steam","saveDetection":{"type":"subdirectories","root":"%APPDATA%/StardewValley/Saves"}}
+{"id":"stardew-valley","name":"Stardew Valley","launcher":"Steam","steamAppId":413150,"saveDetection":{"type":"subdirectories","root":"%APPDATA%/StardewValley/Saves"}}

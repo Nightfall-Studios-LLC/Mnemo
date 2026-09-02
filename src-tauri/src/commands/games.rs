@@ -17,7 +17,7 @@ pub async fn detect_games() -> Result<Vec<DetectedGame>, String> {
                 "files" => for entry in fs::read_dir(&root).map_err(|e| e.to_string())? { let entry = entry.map_err(|e| e.to_string())?; if entry.path().is_file() { let name = entry.file_name().to_string_lossy().to_string(); if def.save_detection.pattern.as_ref().map(|p| name.ends_with(p.trim_start_matches('*'))).unwrap_or(true) { targets.push(target(&def.id, &name, &entry.path().to_string_lossy())); } } },
                 _ => targets.push(target(&def.id, "Entire Save Directory", &root.to_string_lossy())),
             }
-            if !targets.is_empty() { games.push(DetectedGame { id: def.id, name: def.name, launcher: def.launcher, save_targets: targets }); }
+            if !targets.is_empty() { games.push(DetectedGame { id: def.id, name: def.name, launcher: def.launcher, steam_app_id: def.steam_app_id, save_targets: targets }); }
         }
         Ok(games)
     }).await.map_err(|e| e.to_string())?

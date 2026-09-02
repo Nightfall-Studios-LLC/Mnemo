@@ -20,7 +20,7 @@ export default function App() {
   useEffect(() => {
     Promise.allSettled([
       invoke<{ providers?: BackupProvider[]; games?: Game[] }>("load_configuration"),
-      invoke<Array<{ id: string; name: string; launcher: string; saveTargets: Game["saveTargets"] }>>("detect_games"),
+      invoke<Array<{ id: string; name: string; launcher: string; steamAppId?: number; saveTargets: Game["saveTargets"] }>>("detect_games"),
     ]).then(([configResult, detectionResult]) => {
       if (configResult.status === "fulfilled") {
         if (configResult.value.providers?.length) setProviders(configResult.value.providers);
@@ -28,7 +28,7 @@ export default function App() {
       }
       if (detectionResult.status === "fulfilled" && detectionResult.value.length) setGames(current => current.map(game => {
         const detected = detectionResult.value.find(item => item.id === game.id);
-        return detected ? { ...game, launcher: detected.launcher, saveTargets: detected.saveTargets } : game;
+        return detected ? { ...game, launcher: detected.launcher, steamAppId: detected.steamAppId, saveTargets: detected.saveTargets } : game;
       }));
       hydrated.current = true;
     });

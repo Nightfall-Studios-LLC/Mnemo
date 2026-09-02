@@ -13,15 +13,26 @@
     "windows": [
       {
         "title": "Mnemo",
-        "width": 1600,
-        "height": 900,
-        "minWidth": 1100,
-        "minHeight": 680,
+        "width": 1200,
+        "height": 713,
+        "minWidth": 1200,
+        "minHeight": 713,
+        "maxWidth": 1200,
+        "maxHeight": 713,
+        "resizable": false,
+        "maximizable": false,
+        "decorations": false,
+        "transparent": true,
+        "shadow": false,
         "center": true
       }
     ],
     "security": {
-      "csp": null
+      "csp": "default-src 'self' ipc: http://ipc.localhost; img-src 'self' data: asset: http://asset.localhost",
+      "assetProtocol": {
+        "enable": true,
+        "scope": ["$APPCACHE/**/*"]
+      }
     }
   },
   "bundle": {

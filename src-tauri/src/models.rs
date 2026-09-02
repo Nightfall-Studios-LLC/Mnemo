@@ -44,6 +44,7 @@ pub struct GameDefinition {
     pub id: String,
     pub name: String,
     pub launcher: String,
+    pub steam_app_id: Option<u64>,
     pub save_detection: SaveDetection,
 }
 
@@ -62,5 +63,6 @@ pub struct DetectedGame {
     pub id: String,
     pub name: String,
     pub launcher: String,
+    pub steam_app_id: Option<u64>,
     pub save_targets: Vec<SaveTarget>,
 }
