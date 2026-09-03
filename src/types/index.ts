@@ -17,18 +17,11 @@ export interface Game {
   id: string;
   name: string;
   launcher: string;
-  artwork?: ArtworkMetadata;
   steamAppId?: number;
   accent: string;
   saveTargets: SaveTarget[];
   status: Status;
   lastBackup?: string;
-}
-
-export interface ArtworkMetadata {
-  localPath?: string;
-  source: "steamgriddb" | "local" | "placeholder";
-  remoteId?: string;
 }
 
 export interface BackupSnapshot {

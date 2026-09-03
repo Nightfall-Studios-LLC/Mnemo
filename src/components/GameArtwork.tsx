@@ -1,23 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
-import { convertFileSrc } from "@tauri-apps/api/core";
-import type { ArtworkMetadata } from "../types";
-import { artworkService } from "../lib/artworkService";
+import { useMemo } from "react";
+import { Icon } from "./Icons";
+import { getGameArtwork } from "../lib/gameArtwork";
 
-export function GameArtwork({ gameId, name, steamAppId, artwork, className = "" }: { gameId: string; name: string; steamAppId?: number; artwork?: ArtworkMetadata; className?: string }) {
-  const [source, setSource] = useState(() => artwork?.localPath ? convertFileSrc(artwork.localPath) : "");
-  const [loaded, setLoaded] = useState(false);
+export function GameArtwork({ gameId, name, className = "" }: { gameId: string; name: string; className?: string }) {
   const initials = useMemo(() => name.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase(), [name]);
+  const hue = useMemo(() => [...gameId].reduce((value, char) => (value * 31 + char.charCodeAt(0)) % 360, 178), [gameId]);
+  const artwork = getGameArtwork(gameId);
 
-  useEffect(() => {
-    let active = true;
-    artworkService.getGameArtwork({ gameId, gameName: name, steamAppId, existingLocalPath: artwork?.source === "local" ? artwork.localPath : undefined })
-      .then(result => { if (active && result.localPath) setSource(convertFileSrc(result.localPath)); })
-      .catch(() => undefined);
-    return () => { active = false; };
-  }, [gameId, name, steamAppId, artwork?.localPath, artwork?.source]);
-
-  return <span className={`game-artwork ${className}`} aria-label={`${name} artwork`}>
-    <span className="artwork-placeholder"><b>{initials}</b><i/></span>
-    {source && <img className={loaded ? "loaded" : ""} src={source} alt="" onLoad={() => setLoaded(true)} onError={() => setSource("")}/>} 
+  return <span className={`game-artwork ${className}`} style={{ "--art-hue": hue } as React.CSSProperties} aria-label={`${name} artwork placeholder`}>
+    {artwork ? <img src={artwork.icon} alt=""/> : <><Icon name="game" size={18}/><b>{initials || "?"}</b></>}
   </span>;
 }

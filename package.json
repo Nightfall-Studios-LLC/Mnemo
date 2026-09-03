@@ -10,12 +10,17 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@fontsource-variable/comfortaa": "^5.3.0",
+    "@heroui/react": "^3.2.4",
+    "@heroui/styles": "^3.2.4",
     "@tauri-apps/api": "^2",
     "lucide-react": "^1.39.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
     "@tauri-apps/cli": "^2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
