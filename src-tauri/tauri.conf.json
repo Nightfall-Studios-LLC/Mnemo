@@ -14,11 +14,11 @@
       {
         "title": "Mnemo",
         "width": 1200,
-        "height": 713,
+        "height": 720,
         "minWidth": 1200,
-        "minHeight": 713,
+        "minHeight": 720,
         "maxWidth": 1200,
-        "maxHeight": 713,
+        "maxHeight": 720,
         "resizable": false,
         "maximizable": false,
         "decorations": false,
@@ -28,11 +28,7 @@
       }
     ],
     "security": {
-      "csp": "default-src 'self' ipc: http://ipc.localhost; img-src 'self' data: asset: http://asset.localhost",
-      "assetProtocol": {
-        "enable": true,
-        "scope": ["$APPCACHE/**/*"]
-      }
+      "csp": "default-src 'self' ipc: http://ipc.localhost; img-src 'self' data:"
     }
   },
   "bundle": {

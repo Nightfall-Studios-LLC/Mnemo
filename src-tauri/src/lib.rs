@@ -1,6 +1,5 @@
 mod commands;
 mod models;
-mod artwork;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -12,7 +11,6 @@ pub fn run() {
             commands::providers::test_provider,
             commands::persistence::persist_configuration,
             commands::persistence::load_configuration,
-            artwork::get_game_artwork,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
