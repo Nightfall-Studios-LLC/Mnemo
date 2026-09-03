@@ -11,7 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-
+/portable 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
