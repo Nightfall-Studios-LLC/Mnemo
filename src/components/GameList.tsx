@@ -1,21 +1,80 @@
-import type { Game } from "../types";
+import type { MinecraftState } from "../types";
+import { relativeTime, statusTone } from "../lib/format";
 import { Icon, ProviderIcon, StatusIcon } from "./Icons";
 import { GameArtwork } from "./GameArtwork";
 import { Button } from "@heroui/react";
 
-export function GameList({ games, selected, onSelect }: { games: Game[]; selected: string; onSelect: (id: string) => void }) {
-  return <section className="game-panel">
-    <div className="game-head"><span>Games</span><span>{games.length} in library</span></div>
-    <div className="game-rows">{games.map(game => {
-      const providers = [...new Set(game.saveTargets.flatMap(t => t.providerIds))];
-      const enabled = game.saveTargets.filter(t => t.enabled).length;
-      const allProtected = enabled === game.saveTargets.length && game.saveTargets.length > 0;
-      return <Button variant="ghost" key={game.id} className={`game-row ${selected === game.id ? "selected" : ""}`} onPress={() => onSelect(game.id)} aria-pressed={selected === game.id}>
-        <GameArtwork gameId={game.id} name={game.name}/>
-        <span className="game-copy"><strong>{game.name}</strong><small>{game.launcher}</small></span>
-        <span className="game-summary"><span>{allProtected ? `${enabled} saves protected` : `${enabled} of ${game.saveTargets.length} protected`}</span><small>{game.lastBackup ? `Last backup ${game.lastBackup}` : "Never backed up"}</small></span>
-        <span className="game-state"><span className="providers">{providers.map(p => <ProviderIcon key={p} type={p}/>)}</span><StatusIcon status={game.status}/><Icon name="chevron" size={16}/></span>
-      </Button>;
-    })}{!games.length && <div className="empty">No games match your search.</div>}</div>
-  </section>;
+export function GameList({
+  state,
+  selected,
+  onSelect,
+  visible = true,
+}: {
+  state: MinecraftState;
+  selected: boolean;
+  onSelect: () => void;
+  visible?: boolean;
+}) {
+  const assigned = new Set(
+    state.worlds.flatMap((world) => world.effectivePolicy.destinationIds),
+  );
+  const destinations = state.destinations.filter((destination) =>
+    assigned.has(destination.id),
+  );
+  const latest = state.snapshots[0]?.createdAt;
+  return (
+    <section className="game-panel">
+      <div className="game-head">
+        <span>Games</span>
+        <span>{visible ? 1 : 0} in library</span>
+      </div>
+      <div className="game-rows">
+        {visible ? (
+          <Button
+            variant="ghost"
+            className={`game-row ${selected ? "selected" : ""}`}
+            onPress={onSelect}
+            aria-pressed={selected}
+          >
+            <GameArtwork gameId="minecraft-java" name="Minecraft" />
+            <span className="game-copy">
+              <strong>Minecraft</strong>
+              <small>Java Edition</small>
+            </span>
+            <span className="game-summary">
+              <span>
+                {state.protection.protectedWorlds} of{" "}
+                {state.protection.totalWorlds} protected
+              </span>
+              <small>
+                {latest
+                  ? `Last backup ${relativeTime(latest)}`
+                  : "Never backed up"}
+              </small>
+            </span>
+            <span className="game-state">
+              <span className="providers">
+                {destinations.map((destination) => (
+                  <ProviderIcon
+                    key={destination.id}
+                    type={destination.destinationType}
+                  />
+                ))}
+              </span>
+              <StatusIcon
+                status={statusTone(
+                  state.protection.status === "idle"
+                    ? "protected"
+                    : state.protection.status,
+                )}
+              />
+              <Icon name="chevron" size={16} />
+            </span>
+          </Button>
+        ) : (
+          <div className="empty">No games match your search.</div>
+        )}
+      </div>
+    </section>
+  );
 }

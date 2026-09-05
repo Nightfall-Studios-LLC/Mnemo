@@ -1,11 +1,8 @@
-import eldenRingHero from "../assets/gameart/elden-ring-hero.webp";
-import eldenRingIcon from "../assets/gameart/elden-ring-icon.webp";
-import satisfactoryHero from "../assets/gameart/satisfactory-hero.webp";
-import satisfactoryIcon from "../assets/gameart/satisfactory-icon.webp";
+import minecraftHero from "../assets/gameart/minecrafthero.webp";
+import minecraftIcon from "../assets/gameart/minecraftlogo.webp";
 
 const artwork: Record<string, { icon: string; hero: string }> = {
-  "elden-ring": { icon: eldenRingIcon, hero: eldenRingHero },
-  satisfactory: { icon: satisfactoryIcon, hero: satisfactoryHero },
+  "minecraft-java": { icon: minecraftIcon, hero: minecraftHero },
 };
 
 export const getGameArtwork = (gameId: string) => artwork[gameId];
