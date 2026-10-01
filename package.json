@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@fontsource-variable/comfortaa": "^5.3.0",
-    "@heroui/react": "^3.2.4",
+    "@heroui/react": "^3.2.6",
     "@heroui/styles": "^3.2.4",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-autostart": "^2",
