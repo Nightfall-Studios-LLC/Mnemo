@@ -30,7 +30,7 @@ rusqlite = { version = "0.32", features = ["bundled"] }
 uuid = { version = "1", features = ["v4", "serde"] }
 notify = "8"
 walkdir = "2"
-sha2 = "0.10"
+sha2 = "0.11"
 hex = "0.4"
 zip = { version = "2", default-features = false, features = ["deflate"] }
 flate2 = "1"
